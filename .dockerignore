@@ -1,0 +1,12 @@
+**/bin/
+**/obj/
+.git/
+.github/
+.vscode/
+.idea/
+*.user
+*.suo
+*.DS_Store
+secrets.json
+docker-compose.override.yml
+node_modules/

@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="../Bot.Domain/Bot.Domain.csproj" />
+        <ProjectReference Include="../Bot.Application/Bot.Application.csproj" />
+        <ProjectReference Include="../Bot.Adapters.Discord/Bot.Adapters.Discord.csproj" />
+        <ProjectReference Include="../Bot.Adapters.OpenAI/Bot.Adapters.OpenAI.csproj" />
+        <ProjectReference Include="../Bot.Adapters.OpenMeteo/Bot.Adapters.OpenMeteo.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="persona.txt">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables"
+            Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+    </ItemGroup>
+</Project>

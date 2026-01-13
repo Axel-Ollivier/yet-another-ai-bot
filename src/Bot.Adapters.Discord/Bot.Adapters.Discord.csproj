@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="../Bot.Domain/Bot.Domain.csproj" />
+        <ProjectReference Include="../Bot.Application/Bot.Application.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Discord.Net" Version="3.14.1" />
+        <PackageReference Include="Discord.Net.Interactions" Version="3.14.1" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="DiscordGateway.cs" />
+        <Compile Remove="InteractionModule.cs" />
+    </ItemGroup>
+</Project>

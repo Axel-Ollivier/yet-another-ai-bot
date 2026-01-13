@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  bot:
+    build: .
+    image: yet-another-ai-bot:latest
+    restart: unless-stopped
+    environment:
+      # Discord & OpenAI via environment (maps to IConfiguration keys)
+      - Discord__Token=${DISCORD_TOKEN}
+      - Discord__GuildId=${DISCORD_GUILD_ID:-0}
+      - Gpt__ApiKey=${OPENAI_API_KEY}
+      - Gpt__BaseUrl=${OPENAI_BASE_URL:-https://api.openai.com/v1}
+      - Gpt__Model=${OPENAI_MODEL:-gpt-4o-mini}
+      # Optional tuning
+      - Bot__ReplyMaxChars=${BOT_REPLY_MAX_CHARS:-1500}
+      - Bot__InputMaxChars=${BOT_INPUT_MAX_CHARS:-4000}
+      # Persona override via env (alternative to persona.txt)
+      # - Persona__Prompt=You are a senior full‑stack developer. Be concise.
+    # Mount local persona or secrets if preferred
+    volumes:
+      - ./src/Bot.Host/persona.txt:/app/persona.txt:ro
+      # - ./secrets.json:/app/secrets.json:ro

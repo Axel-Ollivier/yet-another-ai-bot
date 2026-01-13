@@ -1,0 +1,16 @@
+# Build
+bin/
+obj/
+**/bin/
+**/obj/
+
+# VS Code
+.vscode/
+
+# User/secrets
+secrets.json
+appsettings.Local.json
+
+# Others
+*.user
+*.suo
