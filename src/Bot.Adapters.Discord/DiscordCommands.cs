@@ -2,6 +2,7 @@ using Bot.Application;
 using Bot.Domain;
 using Discord;
 using Discord.Interactions;
+using Discord.WebSocket;
 
 namespace Bot.Adapters.Discord;
 
@@ -30,6 +31,7 @@ public class DiscordCommands : InteractionModuleBase<SocketInteractionContext>
             MessageId: Context.Interaction.Id.ToString(),
             MentionedUserIds: Array.Empty<string>(),
             BotUserId: Context.Client.CurrentUser.Id.ToString(),
+            isDirectMessage: Context.Channel.GetType() == typeof(SocketDMChannel),
             IsSlashCommand: true
         );
 
