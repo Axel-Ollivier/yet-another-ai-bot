@@ -12,6 +12,7 @@ Discord bot built with .NET 8 in a hexagonal architecture (Domain, Application, 
 ## Secrets (file-based)
 Create a file at repo root: [secrets.json](secrets.json)
 
+```json
 {
    "Discord": {
       "Token": "YOUR_DISCORD_BOT_TOKEN",
@@ -21,6 +22,7 @@ Create a file at repo root: [secrets.json](secrets.json)
       "ApiKey": "YOUR_OPENAI_API_KEY"
    }
 }
+```
 
 GuildId optional: if set to your server ID, slash commands appear immediately on that guild; otherwise they are registered globally (may take time to propagate).
 
@@ -54,7 +56,7 @@ On startup, slash commands register to your GuildId (if configured) or globally.
 ## Architecture (hexagonal)
 - Domain (pure models):
    - [src/Bot.Domain/Entities.cs](src/Bot.Domain/Entities.cs)
-      - Persona, DiscordMessage, GptRequest/GptResponse, BotDecision, WeatherInfo
+   - Persona, DiscordMessage, GptRequest/GptResponse, BotDecision, WeatherInfo
 - Application (use cases + contracts):
    - Use case: [src/Bot.Application/HandleIncomingDiscordMessage.cs](src/Bot.Application/HandleIncomingDiscordMessage.cs)
    - Interfaces (ports): [src/Bot.Application/Interfaces.cs](src/Bot.Application/Interfaces.cs) → IGptClient, IRateLimiter, IWeatherClient

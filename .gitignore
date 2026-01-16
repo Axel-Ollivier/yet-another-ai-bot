@@ -10,6 +10,7 @@ obj/
 # User/secrets
 secrets.json
 appsettings.Local.json
+persona.txt
 
 # Others
 *.user
