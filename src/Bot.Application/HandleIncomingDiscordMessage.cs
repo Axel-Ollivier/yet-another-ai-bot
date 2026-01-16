@@ -44,9 +44,6 @@ public sealed class HandleIncomingDiscordMessage
         }
 
         content = content.Trim();
-        if (string.IsNullOrWhiteSpace(content))
-            return BotDecision.Ignore();
-
         if (content.Length > _options.InputMaxChars)
         {
             content = content[.._options.InputMaxChars];
