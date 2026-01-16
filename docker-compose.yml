@@ -18,5 +18,5 @@ services:
       # - Persona__Prompt=You are a senior full‑stack developer. Be concise.
     # Mount local persona or secrets if preferred
     volumes:
-      - ./src/Bot.Host/persona.txt:/app/persona.txt:ro
-      # - ./secrets.json:/app/secrets.json:ro
+      - ./persona.txt:/app/persona.txt:ro
+      - ./secrets.json:/app/secrets.json:ro

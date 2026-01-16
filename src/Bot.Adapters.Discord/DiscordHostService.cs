@@ -119,7 +119,7 @@ public sealed class DiscordHostService : IHostedService
     private Task OnMessageReceivedAsync(SocketMessage raw)
     {
         if (raw is not SocketUserMessage msg) return Task.CompletedTask;
-        if (msg.Author.Id == _client.CurrentUser.Id || msg.Author.IsBot) return Task.CompletedTask;
+        if (msg.Author.Id == _client.CurrentUser.Id) return Task.CompletedTask;
 
         var channel = msg.Channel;
         // Permission guard: if guild channel, ensure we can send messages
@@ -148,7 +148,8 @@ public sealed class DiscordHostService : IHostedService
                 MessageId: msg.Id.ToString(),
                 MentionedUserIds: mentions,
                 BotUserId: _client.CurrentUser.Id.ToString(),
-                IsSlashCommand: false
+                IsSlashCommand: false,
+                isDirectMessage: msg.Channel.GetType() == typeof(SocketDMChannel)
             );
 
             try

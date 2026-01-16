@@ -28,13 +28,11 @@ public sealed class HandleIncomingDiscordMessage
 
     public async Task<BotDecision> HandleAsync(DiscordMessage msg, CancellationToken ct)
     {
-        if (msg.AuthorIsBot) return BotDecision.Ignore();
-
         var content = msg.Content ?? string.Empty;
 
-        // Accept if slash command or if bot is mentioned
+        // Accept if slash command, if bot is mentioned or if it's a direct message
         var isMentioned = msg.MentionedUserIds.Contains(msg.BotUserId);
-        if (!(msg.IsSlashCommand || isMentioned))
+        if (!(msg.IsSlashCommand || isMentioned || msg.isDirectMessage))
             return BotDecision.Ignore();
 
         if (!msg.IsSlashCommand)

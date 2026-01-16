@@ -11,6 +11,7 @@ public sealed record DiscordMessage(
     string MessageId,
     IReadOnlyList<string> MentionedUserIds,
     string BotUserId,
+    bool isDirectMessage,
     bool IsSlashCommand = false
 );
 
